@@ -1,17 +1,19 @@
-import logo from './logo.svg';
 import { useEffect, useState} from 'react';
 // @ts-ignore  
 import jwt_decode from "jwt-decode";
 import './App.css';
 import Speaker from './components/Speaker/Speaker';
+import EmailContainer from './components/EmailContainer/EmailContainer';
 
 function App() {
   const [ user, setUser ] = useState({})
 
+  
   function handleCallbackResponse(response){
-    console.log("Econoded JWT ID token: " + response.credential);
+    console.log("Encoded JWT ID token: " + response.credential);
     var userObject = jwt_decode(response.credential);
     setUser(userObject);
+    console.log(userObject)
     document.getElementById("signInDiv").hidden = true;
   }
 
@@ -48,6 +50,7 @@ function App() {
         <h3>{user.name}</h3>
         </div>
       }
+      <EmailContainer user={user}/>
       <Speaker />
       </div>
   );
