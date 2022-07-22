@@ -30,12 +30,14 @@ function App() {
       document.getElementById("signInDiv"),
       { theme: "outline", size: "large"}
     );
+
+    google.accounts.id.prompt();
   }, []);
 
   return (
     <div className="App"> 
       <div id="signInDiv"></div>
-      { Object.keys(user).length != 0 &&
+      { Object.keys(user).length !== 0 &&
         <button onClick={ (e) => handleSignOut(e)}> Sign Out</button>
       }
       
@@ -48,8 +50,5 @@ function App() {
       </div>
   );
 }
-
-
-
 
 export default App;
