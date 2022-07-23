@@ -10,9 +10,10 @@ function App() {
 
   function handleCallbackResponse(response){
     console.log("Econoded JWT ID token: " + response.credential);
-    var userObject = jwt_decode(response.credential);
+    const userObject = jwt_decode(response.credential);
     setUser(userObject);
     document.getElementById("signInDiv").hidden = true;
+    console.log("User ID: " + userObject.sub);
   }
 
   function handleSignOut(event){
