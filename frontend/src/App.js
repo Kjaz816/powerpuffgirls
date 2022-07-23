@@ -1,7 +1,17 @@
+
+import { useEffect, useState } from 'react'
 import "./App.css";
+import MessageContainer from './components/MessageContainer/MessageContainer';
 import Speaker from "./components/Speaker/Speaker";
 
 function App() {
+  const [signedIn, setSignedIn] = useState(false);
+  const [emails, setEmails] = useState([]);
+
+  useEffect(() => {
+    console.log(emails);
+  },[emails]);
+
   /* global gapi */
   function authenticate() {
     return gapi.auth2
@@ -13,6 +23,7 @@ function App() {
       .then(
         function () {
           console.log("Sign-in successful");
+          setSignedIn(true);
         },
         function (err) {
           console.error("Error signing in", err);
@@ -63,6 +74,7 @@ function App() {
       );
   }
 
+  // We don't need IDs if we can get the list of messages directly
   function getIds() {
     var request = gapi.client.gmail.users.messages.list({
       userId: "me",
@@ -102,6 +114,12 @@ function App() {
     });
     request.execute(function (response) {
       console.log("Snippet:", response.result.snippet);
+      console.log("Snippet:", response.result);
+      setEmails(emails => {
+        console.log(emails.length);
+        const newEmails = [...emails, response.result]
+        return (newEmails)
+      });
     });
   }
 
@@ -125,10 +143,12 @@ function App() {
   return (
     <div className="App">
       <Speaker />
+      <div>{signedIn ? 'WOW' : "NOW"}</div>
       <button onClick={handleLogin}>Login and Authentication</button>
       <button onClick={getResponse}>JSON Response</button>
       <button onClick={getIds}>Email IDs</button>
       <button onClick={getEmails}>Email Snippets</button>{" "}
+      <MessageContainer messages={emails}/>
       {/* currently only get snippet, need to get whole body through payload */}
     </div>
   );
