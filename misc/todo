@@ -1,0 +1,4 @@
+look through payload docs to retrieve full email body (currently .snippet is not full)
+insert messages onto page with card UI - possibly do within message list for loop to track current message
+have button and or on enter key read the message and mark as read and pop the card bringing the next card over
+add randomized voice to message read

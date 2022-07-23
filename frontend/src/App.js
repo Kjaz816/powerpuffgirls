@@ -55,7 +55,7 @@ function App() {
       })
       .then(
         function (response) {
-          console.log("Response", response.result);
+          console.log("Response:", response.result);
         },
         function (err) {
           console.error("Execute error", err);
@@ -72,7 +72,7 @@ function App() {
       var msg = response.messages;
       if (msg.length > 0) {
         for (var i = 0; i < msg.length; i++) {
-          console.log(msg[i].id);
+          console.log("ID:", msg[i].id);
         }
       }
     });
@@ -101,12 +101,25 @@ function App() {
       format: "full",
     });
     request.execute(function (response) {
-      console.log(response.result.snippet);
+      console.log("Snippet:", response.result.snippet);
     });
   }
 
   function insertMessage(message) {
     console.log(message);
+  }
+
+  function markRead(id) {
+    var request = gapi.client.gmail.users.messages.modify({
+      userId: "me",
+      id: id,
+      resource: {
+        removeLabelIds: ["UNREAD"],
+      },
+    });
+    request.execute(function (response) {
+      console.log("Marked as read:", response);
+    });
   }
 
   return (
