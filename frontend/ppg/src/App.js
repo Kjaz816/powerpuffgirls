@@ -48,6 +48,7 @@ function App() {
         <h3>{user.name}</h3>
         </div>
       }
+      <Speaker />
       </div>
   );
 }
