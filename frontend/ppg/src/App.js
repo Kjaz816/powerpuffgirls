@@ -9,9 +9,15 @@ function App() {
 
   function handleCallbackResponse(response){
     console.log("Econoded JWT ID token: " + response.credential);
-    var userObject = jwt_decode(response.credential);
+    const userObject = jwt_decode(response.credential);
     setUser(userObject);
     document.getElementById("signInDiv").hidden = true;
+    console.log("ID: " + userObject.sub);
+     console.log('Full Name: ' + userObject.name);
+     console.log('Given Name: ' + userObject.given_name);
+     console.log('Family Name: ' + userObject.family_name);
+     console.log("UserID: " + userObject.sub);
+     console.log("Email: " + userObject.email);
   }
 
   function handleSignOut(event){
