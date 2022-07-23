@@ -1,0 +1,21 @@
+{
+  "name": "ppg-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "api": "^4.5.1",
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "uberduck-api": "^1.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
