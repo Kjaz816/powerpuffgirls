@@ -113,8 +113,8 @@ function App() {
       format: "full",
     });
     request.execute(function (response) {
-      console.log("Snippet:", response.result.snippet);
-      console.log("Snippet:", response.result);
+      console.log("Result:", response.result);
+      
       setEmails(emails => {
         console.log(emails.length);
         const newEmails = [...emails, response.result]
@@ -142,12 +142,13 @@ function App() {
 
   return (
     <div className="App">
-      <Speaker />
       <div>{signedIn ? 'WOW' : "NOW"}</div>
-      <button onClick={handleLogin}>Login and Authentication</button>
-      <button onClick={getResponse}>JSON Response</button>
-      <button onClick={getIds}>Email IDs</button>
-      <button onClick={getEmails}>Email Snippets</button>{" "}
+      <div className='buttons-container'>
+        <button onClick={handleLogin}>Login and Authentication</button>
+        <button onClick={getResponse}>JSON Response</button>
+        <button onClick={getIds}>Email IDs</button>
+        <button onClick={getEmails}>Email Snippets</button>{" "}
+      </div>
       <MessageContainer messages={emails}/>
       {/* currently only get snippet, need to get whole body through payload */}
     </div>
