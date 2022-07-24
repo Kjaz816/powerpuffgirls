@@ -31,8 +31,8 @@ const Speaker = ({ messageSnippet, loadingMsg }) => {
     }, [voices]);
 
     useEffect(() => {
-      console.log(wavAudio);
-    });
+      if(wavAudio) wavAudio.load();
+    }, [wavAudio]);
 
     const retrieveWavData = () => {
         console.log('Retrieving Wav Data...');
@@ -71,6 +71,7 @@ const Speaker = ({ messageSnippet, loadingMsg }) => {
 
             var audio = new Audio(url);
             setWavAudio(audio);
+
             // audio.load()
             // audio.play();
           }).catch(function (error) {
@@ -79,14 +80,18 @@ const Speaker = ({ messageSnippet, loadingMsg }) => {
       }
 
       const playAudio = () => {
-        wavAudio.load()
         wavAudio.play();
+      }
+
+      const pauseAudio = () => {
+        wavAudio.pause();
       }
 
     return (
         <div>
-            <button onClick={retrieveWavData}>RETRIEVE ME!</button>
-            {wavAudio && <button onClick={playAudio}>PLAY ME!</button>}
+   
+            {wavAudio && <button onClick={playAudio}>▶</button>}
+            {wavAudio && <button onClick={pauseAudio}>◼️</button>}
         </div>
     )
 }
