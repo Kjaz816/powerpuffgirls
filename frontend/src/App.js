@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import MessageContainer from "./components/MessageContainer/MessageContainer";
-import Speaker from "./components/Speaker/Speaker";
 import duck from "./components/Images/duck.png";
 
 function App() {
@@ -98,10 +97,7 @@ function App() {
       format: "full",
     });
     request.execute(function (response) {
-      console.log("Result:", response.result);
-
       setEmails((emails) => {
-        console.log(emails.length);
         const newEmails = [...emails, response.result];
         return newEmails;
       });

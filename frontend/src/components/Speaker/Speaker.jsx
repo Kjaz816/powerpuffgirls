@@ -3,7 +3,7 @@ import React, { useState,useEffect } from 'react'
 
 const axios = require("axios").default;
 
-const Speaker = ({ messageSnippet, loadingMsg }) => {
+const Speaker = ({ messageSnippet }) => {
     const [voices, setVoices] = useState();
     const [wavAudio, setWavAudio] = useState();
 
