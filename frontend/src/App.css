@@ -1,14 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro&family=Roboto+Slab:wght@400;500&display=swap');
 
 .App {
-  text-align: center; 
-  height: 100vh; 
-  width: 100vw; 
-  display: flex;
-  background:rgba(255, 255, 255, 0);
-  justify-content: center;
-  background: url("components/Images/sponge.png");
-  overflow: hidden; 
+  text-align: center;
 }
 
 .App-logo {
@@ -68,12 +61,13 @@ button {
 
 
 .btn {
+  background-color: red; 
   background-color: white; 
   color: rgb(85, 169, 202);
   border: 2px solid rgb(85, 169, 202);
   width: 100%; 
   display: block;
-  border-radius: 15px; 
+  border-radius: 8px; 
   margin: 10px; 
   padding: 5px;
   font-size: 20px; 
@@ -82,17 +76,4 @@ button {
 .quack {
   width: 80px; 
 
-}
-
-.invisible {
-  visibility: hidden; 
-}
-
-.pic {
-  width: 10%; 
-  height: 50%; 
-  display: flex; 
-  position: absolute; 
-  left: 100px; 
-  top: 300px; 
 }

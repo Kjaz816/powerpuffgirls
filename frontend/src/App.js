@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-
-import MessageContainer from './components/MessageContainer/MessageContainer';
-import duck from './components/Images/duck.png';
-import minion from './components/Images/minions.png';
-import spongebob from './components/Images/spongebob.png';
+import MessageContainer from "./components/MessageContainer/MessageContainer";
+import duck from "./components/Images/duck.png";
 
 function App() {
   const [signedIn, setSignedIn] = useState(false);
@@ -91,11 +88,6 @@ function App() {
         }
       }
     });
-    const redbutton = document.getElementById("btn");
-    redbutton.classList.add("invisible");
-    const quack = document.getElementById("quack");
-    quack.classList.add("invisible");
-
   }
 
   function getMessage(id) {
@@ -127,10 +119,11 @@ function App() {
 
   return (
     <div className="App">
-      <img src = {minion} className = "pic"/>
-      <div className='buttons-container' id = "quack">
-        <img className = "quack" id = "quack" src = {duck}/>
-        <button className="btn" id = "btn" onClick={handleLogin}>LOGIN </button>
+      <div className="buttons-container">
+        <img className="quack" src={duck} />
+        <button className="btn" onClick={handleLogin}>
+          LOGIN
+        </button>
       </div>
       <MessageContainer messages={emails} />
       {/* currently only get snippet, need to get whole body through payload */}
