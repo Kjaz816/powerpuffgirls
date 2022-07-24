@@ -8,7 +8,7 @@ const Message = ({ message }) => {
     return (
         <div className='message'>
             {decodeURIComponent(message.snippet)}
-            <Speaker messageSnippet={message.snippet} loadingMsg={loadingMsg}/>
+            <Speaker messageSnippet={message.snippet}/>
         </div>
     )
 }

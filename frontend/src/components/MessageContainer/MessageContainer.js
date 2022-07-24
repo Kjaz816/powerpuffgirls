@@ -4,13 +4,6 @@ import './MessageContainer.css'
 
 const MessageContainer = ({messages}) => {
 
-    // useEffect(() => {
-    //     if(messages.length > 0) {
-    //         console.log(`Hello There`)
-    //         console.log(messages)
-    //     }
-    // });
-
     const renderMessages = () => {
         return messages.map(message => <Message message={message}/>)
     }
