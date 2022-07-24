@@ -93,7 +93,7 @@ function App() {
   function getEmails() {
     var request = gapi.client.gmail.users.messages.list({
       userId: "me",
-      maxResults: 5,
+      maxResults: 1,
     });
     request.execute(function (response) {
       var msg = response.messages;
