@@ -1,8 +1,7 @@
-
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 import "./App.css";
+
 import MessageContainer from './components/MessageContainer/MessageContainer';
-import Speaker from "./components/Speaker/Speaker";
 import duck from './components/Images/duck.png';
 import minion from './components/Images/minions.png';
 import spongebob from './components/Images/spongebob.png';
@@ -13,7 +12,7 @@ function App() {
 
   useEffect(() => {
     console.log(emails);
-  },[emails]);
+  }, [emails]);
 
   /* global gapi */
   function authenticate() {
@@ -27,6 +26,7 @@ function App() {
         function () {
           console.log("Sign-in successful");
           setSignedIn(true);
+          getEmails();
         },
         function (err) {
           console.error("Error signing in", err);
@@ -77,22 +77,6 @@ function App() {
       );
   }
 
-  // We don't need IDs if we can get the list of messages directly
-  function getIds() {
-    var request = gapi.client.gmail.users.messages.list({
-      userId: "me",
-      maxResults: 5,
-    });
-    request.execute(function (response) {
-      var msg = response.messages;
-      if (msg.length > 0) {
-        for (var i = 0; i < msg.length; i++) {
-          console.log("ID:", msg[i].id);
-        }
-      }
-    });
-  }
-
   function getEmails() {
     var request = gapi.client.gmail.users.messages.list({
       userId: "me",
@@ -121,18 +105,11 @@ function App() {
       format: "full",
     });
     request.execute(function (response) {
-      console.log("Result:", response.result);
-      
-      setEmails(emails => {
-        console.log(emails.length);
-        const newEmails = [...emails, response.result]
-        return (newEmails)
+      setEmails((emails) => {
+        const newEmails = [...emails, response.result];
+        return newEmails;
       });
     });
-  }
-
-  function insertMessage(message) {
-    console.log(message);
   }
 
   function markRead(id) {
@@ -154,9 +131,8 @@ function App() {
       <div className='buttons-container' id = "quack">
         <img className = "quack" id = "quack" src = {duck}/>
         <button className="btn" id = "btn" onClick={handleLogin}>LOGIN </button>
-        <button className="btn" id = "btn" onClick={getEmails}>START</button>{" "}
       </div>
-      <MessageContainer messages={emails}/>
+      <MessageContainer messages={emails} />
       {/* currently only get snippet, need to get whole body through payload */}
     </div>
   );
