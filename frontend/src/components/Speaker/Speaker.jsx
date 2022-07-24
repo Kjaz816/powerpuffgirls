@@ -4,11 +4,31 @@ import React, { useState,useEffect } from 'react'
 const axios = require("axios").default;
 
 const Speaker = ({ messageSnippet, loadingMsg }) => {
+    const [voices, setVoices] = useState();
     const [wavAudio, setWavAudio] = useState();
 
     useEffect(() => {
-      retrieveWavData();
-    }, []);
+      const options = {
+        method: 'GET',
+        url: 'https://api.uberduck.ai/voices',
+        params: {mode: 'tts-basic'},
+        headers: {
+          Accept: 'application/json',
+          Authorization: 'Basic cHViX3Bja2Zjc2Rjb3VwdmV3cmlzeDpwa19mMGQ0N2M0Ny1lZjAxLTRjMmItYWUzZS1hMGQ4YWE5MjU4N2Y='
+        }
+      };
+      
+      axios.request(options).then(function (response) {
+        console.log(response.data);
+        setVoices(response.data);
+      }).catch(function (error) {
+        console.error(error);
+      });
+    },[]);
+
+    useEffect(() => {
+      if(voices) retrieveWavData();
+    }, [voices]);
 
     useEffect(() => {
       console.log(wavAudio);
@@ -16,7 +36,10 @@ const Speaker = ({ messageSnippet, loadingMsg }) => {
 
     const retrieveWavData = () => {
         console.log('Retrieving Wav Data...');
-    
+
+        const voice = voices[Math.floor(Math.random() * voices.length)].voicemodel_uuid;
+        
+
         const options = {
           method: 'POST',
           url: 'https://api.uberduck.ai/speak-synchronous',
@@ -24,13 +47,13 @@ const Speaker = ({ messageSnippet, loadingMsg }) => {
           headers: {
             // Accept: 'application/json',
             'uberduck-id': 'anonymous',
-            'Content-Type': 'audio/wav',
+            'Content-Type': 'audio/wav',  
             Authorization: 'Basic cHViX3Bja2Zjc2Rjb3VwdmV3cmlzeDpwa19mMGQ0N2M0Ny1lZjAxLTRjMmItYWUzZS1hMGQ4YWE5MjU4N2Y='
           },
           data: {
             pace: 1,
             speech: `${messageSnippet}`,
-            voicemodel_uuid: '9b0ed5fa-d7ae-4516-be76-23db89074dea'
+            voicemodel_uuid: voice
           }
         };
 
