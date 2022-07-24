@@ -142,12 +142,14 @@ function App() {
 
   return (
     <div className="App">
-      <div>{signedIn ? 'WOW' : "NOW"}</div>
+
       <div className='buttons-container'>
-        <button onClick={handleLogin}>Login and Authentication</button>
+
+        <button className="btn" onClick={handleLogin}>Login and Authentication</button>
         <button onClick={getResponse}>JSON Response</button>
         <button onClick={getIds}>Email IDs</button>
         <button onClick={getEmails}>Email Snippets</button>{" "}
+        <div>{signedIn ? 'WOW' : "NOW"}</div>
       </div>
       <MessageContainer messages={emails}/>
       {/* currently only get snippet, need to get whole body through payload */}

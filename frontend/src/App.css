@@ -39,5 +39,25 @@
 
 
 .buttons-container {
+  width: 200px; 
+  margin: 0;
   position: absolute;
+
+
 }
+
+button {
+  background-color: white; 
+  color: rgb(85, 169, 202);
+  border: 2px solid rgb(85, 169, 202);
+  width: 100%; 
+  display: block;
+  border-radius: 8px; 
+  margin: 10px; 
+  padding: 5px;
+}
+
+* {
+  font-family: "Comic Sans MS"; 
+}
+
