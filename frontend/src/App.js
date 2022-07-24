@@ -150,7 +150,8 @@ function App() {
 
   return (
     <div className="App">
-      <img src = {minion} className = "pic"/>
+      <img src = {minion} id = "invisible" className = "pic"/>
+      <img src = {spongebob} id = "invisible" className = "bob" /> 
       <div className='buttons-container' id = "quack">
         <img className = "quack" id = "quack" src = {duck}/>
         <button className="btn" id = "btn" onClick={handleLogin}>LOGIN </button>
