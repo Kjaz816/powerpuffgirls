@@ -89,10 +89,20 @@ button {
 }
 
 .pic {
-  width: 10%; 
+  width: 15%; 
   height: 50%; 
   display: flex; 
   position: absolute; 
-  left: 100px; 
+
+  left: 1050px; 
   top: 300px; 
+}
+
+.bob {
+  width: 15%; 
+  height: 30%; 
+  display: inline-block; 
+  position: absolute; 
+  left: 100px; 
+  top: 450px; 
 }

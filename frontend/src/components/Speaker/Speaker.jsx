@@ -89,7 +89,7 @@ const Speaker = ({ messageSnippet }) => {
 
     return (
         <div>
-   
+             {!wavAudio && 'loading...'}
             {wavAudio && <button onClick={playAudio}>▶</button>}
             {wavAudio && <button onClick={pauseAudio}>◼️</button>}
         </div>
