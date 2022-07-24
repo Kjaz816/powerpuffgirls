@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&family=Roboto+Slab:wght@400;500&display=swap');
+
 .App {
   text-align: center;
 }
@@ -42,12 +44,24 @@
   width: 200px; 
   margin: 0;
   position: absolute;
-<<<<<<< Updated upstream
+  left: 42%; 
+  top: 24%; 
 
 
 }
 
 button {
+
+}
+
+* {
+  font: 'Roboto Slab' 30px; 
+}
+
+
+
+.btn {
+  background-color: red; 
   background-color: white; 
   color: rgb(85, 169, 202);
   border: 2px solid rgb(85, 169, 202);
@@ -56,16 +70,10 @@ button {
   border-radius: 8px; 
   margin: 10px; 
   padding: 5px;
+  font-size: 20px; 
 }
 
-* {
-  font-family: "Comic Sans MS"; 
-}
+.quack {
+  width: 80px; 
 
-=======
 }
-
-.btn {
-  background-color: red; 
-}
->>>>>>> Stashed changes

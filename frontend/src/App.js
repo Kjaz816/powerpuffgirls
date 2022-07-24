@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import "./App.css";
 import MessageContainer from './components/MessageContainer/MessageContainer';
 import Speaker from "./components/Speaker/Speaker";
+import duck from './components/Images/duck.png'
 
 function App() {
   const [signedIn, setSignedIn] = useState(false);
@@ -93,7 +94,7 @@ function App() {
   function getEmails() {
     var request = gapi.client.gmail.users.messages.list({
       userId: "me",
-      maxResults: 1,
+      maxResults: 5,
     });
     request.execute(function (response) {
       var msg = response.messages;
@@ -144,12 +145,9 @@ function App() {
     <div className="App">
 
       <div className='buttons-container'>
-
-        <button className="btn" onClick={handleLogin}>Login and Authentication</button>
-        <button onClick={getResponse}>JSON Response</button>
-        <button onClick={getIds}>Email IDs</button>
-        <button onClick={getEmails}>Email Snippets</button>{" "}
-        <div>{signedIn ? 'WOW' : "NOW"}</div>
+        <img className = "quack" src = {duck}/>
+        <button className="btn" onClick={handleLogin}>LOGIN </button>
+        <button className="btn" onClick={getEmails}>START</button>{" "}
       </div>
       <MessageContainer messages={emails}/>
       {/* currently only get snippet, need to get whole body through payload */}

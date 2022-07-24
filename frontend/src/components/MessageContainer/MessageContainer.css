@@ -1,13 +1,9 @@
 .message-container {
-<<<<<<< Updated upstream
     width: 1350x;
     height: 1000px;
     background: url("../Images/sponge.png");
-=======
-    width: 500px;
-    height: 500px;
+
     background-color: rgb(147, 193, 253);
->>>>>>> Stashed changes
     display: flex;
     flex-direction: column;
     overflow: scroll;
