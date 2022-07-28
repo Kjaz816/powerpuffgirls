@@ -1,9 +1,11 @@
 import React, { useState,useEffect } from 'react'
 // import sound from './audio.wav';
+import loading from '../Images/loading.gif'
+import VoicesData from './VoicesData'
 
 const axios = require("axios").default;
 
-const Speaker = ({ messageSnippet }) => {
+const Speaker = ({ messageSnippet, voiceIndex, setPlaying }) => {
     const [voices, setVoices] = useState();
     const [wavAudio, setWavAudio] = useState();
 
@@ -37,8 +39,8 @@ const Speaker = ({ messageSnippet }) => {
     const retrieveWavData = () => {
         console.log('Retrieving Wav Data...');
 
-        const voice = voices[Math.floor(Math.random() * voices.length)].voicemodel_uuid;
-        
+        // const voice = voices[Math.floor(Math.random() * voices.length)].voicemodel_uuid;
+        const voice = VoicesData[voiceIndex%VoicesData.length]
 
         const options = {
           method: 'POST',
@@ -70,6 +72,10 @@ const Speaker = ({ messageSnippet }) => {
             const url = URL.createObjectURL(blob);
 
             var audio = new Audio(url);
+            audio.addEventListener('ended', () => {
+              setPlaying(false);
+            });
+
             setWavAudio(audio);
 
             // audio.load()
@@ -81,15 +87,17 @@ const Speaker = ({ messageSnippet }) => {
 
       const playAudio = () => {
         wavAudio.play();
+        setPlaying(true)
       }
 
       const pauseAudio = () => {
         wavAudio.pause();
+        setPlaying(false)
       }
 
     return (
         <div>
-   
+            {!wavAudio && <img src={loading}/>}
             {wavAudio && <button onClick={playAudio}>▶</button>}
             {wavAudio && <button onClick={pauseAudio}>◼️</button>}
         </div>

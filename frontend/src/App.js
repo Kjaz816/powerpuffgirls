@@ -112,7 +112,7 @@ function App() {
     });
   }
 
-  function markRead(id) {
+  function mrkaRead(id) {
     var request = gapi.client.gmail.users.messages.modify({
       userId: "me",
       id: id,
@@ -127,7 +127,7 @@ function App() {
 
   return (
     <div className="App">
-      <img src = {minion} className = "pic"/>
+      <img src = {spongebob} className = "pic"/>
       <div className='buttons-container' id = "quack">
         <img className = "quack" id = "quack" src = {duck}/>
         <button className="btn" id = "btn" onClick={handleLogin}>LOGIN </button>

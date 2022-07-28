@@ -5,7 +5,7 @@ import './MessageContainer.css'
 const MessageContainer = ({messages}) => {
 
     const renderMessages = () => {
-        return messages.map(message => <Message message={message}/>)
+        return messages.map((message,i) => <Message message={message} voiceIndex={i}/>)
     }
 
     return (

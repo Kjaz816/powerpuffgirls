@@ -16,3 +16,13 @@
     color: rgb(0, 0, 0);
     padding: 10px; 
 }
+
+.message img{
+    padding-top: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+.playing {
+    color: rgb(117, 191, 255);
+}
